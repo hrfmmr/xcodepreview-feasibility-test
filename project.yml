@@ -1,0 +1,54 @@
+name: myapp
+
+options:
+  bundleIdPrefix: com.hrfmmr
+  deploymentTarget:
+    iOS: 13.0
+  carthageExecutablePath: mint run Carthage/Carthage
+
+targetTemplates:
+  EmbeddedFramework:
+    platform: iOS
+    type: framework
+    sources:
+      - path: ${target_name}
+  EmbeddedFrameworkTests:
+    type: bundle.unit-test
+    platform: iOS
+    dependencies:
+      - target: myapp
+    sources:
+      - path: ${target_name}
+
+targets:
+  myapp:
+    type: application
+    platform: iOS
+    sources:
+      - myapp
+    dependencies:
+      - target: featureA
+      - carthage: RxSwift
+      - carthage: IGListKit
+      - carthage: IGListDiffKit
+  myappTests:
+    templates:
+      - EmbeddedFrameworkTests
+  featureA:
+    templates:
+      - EmbeddedFramework
+    dependencies:
+      - carthage: RxSwift
+      - carthage: IGListKit
+      - carthage: IGListDiffKit
+  featureATests:
+    templates:
+      - EmbeddedFrameworkTests
+
+settings:
+  base:
+    MARKETING_VERSION: 0.0.0
+    CURRENT_PROJECT_VERSION: 1
+  config:
+    debug:
+      DEBUG_INFORMATION_FORMAT: "dwarf-with-dsym"
