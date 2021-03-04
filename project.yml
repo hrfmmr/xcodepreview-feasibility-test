@@ -19,6 +19,11 @@ targetTemplates:
       - target: myapp
     sources:
       - path: ${target_name}
+  SandboxApp:
+    type: application
+    platform: iOS
+    sources:
+      - ${target_name}
 
 targets:
   myapp:
@@ -43,8 +48,8 @@ targets:
       - carthage: IGListKit
       - carthage: IGListDiffKit
   featureASandboxApp:
-    type: application
-    platform: iOS
+    templates:
+      - SandboxApp
     sources:
       - featureA
     dependencies:
