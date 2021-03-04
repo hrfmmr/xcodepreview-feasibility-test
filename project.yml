@@ -34,6 +34,7 @@ targets:
   myappTests:
     templates:
       - EmbeddedFrameworkTests
+
   featureA:
     templates:
       - EmbeddedFramework
@@ -41,9 +42,16 @@ targets:
       - carthage: RxSwift
       - carthage: IGListKit
       - carthage: IGListDiffKit
-  featureATests:
-    templates:
-      - EmbeddedFrameworkTests
+  featureASandboxApp:
+    type: application
+    platform: iOS
+    sources:
+      - featureA
+    dependencies:
+      - target: featureA
+      - carthage: RxSwift
+      - carthage: IGListKit
+      - carthage: IGListDiffKit
 
 settings:
   base:
