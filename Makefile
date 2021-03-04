@@ -1,5 +1,4 @@
 XCODE_PROJ := myapp.xcodeproj
-BUNDLE_PATH ?= vendor/bundle
 
 mint-run := mint run
 
