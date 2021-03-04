@@ -18,7 +18,7 @@ carthage:
 
 .PHONY: build-xcodeprj
 build-xcodeprj:
-	mint run xcodegen
+	$(mint-run) xcodegen
 
 .PHONY: open
 open:
